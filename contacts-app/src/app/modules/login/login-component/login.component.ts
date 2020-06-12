@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLogin() {
-    console.log(this.loginForm);
     this.loginService
       .login(this.loginForm?.value?.email, this.loginForm?.value?.password)
       .pipe(

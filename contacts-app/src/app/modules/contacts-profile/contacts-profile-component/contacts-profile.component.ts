@@ -43,7 +43,6 @@ export class ContactsProfileComponent implements OnInit {
   }
 
   save() {
-    console.log(this.contactProfileForm.value);
     this.contactsProfileService
       .editContact(this.contactProfileForm.value)
       .pipe(

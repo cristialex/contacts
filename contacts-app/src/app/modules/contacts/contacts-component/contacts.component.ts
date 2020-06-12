@@ -60,6 +60,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
       this.contacts = this.contacts.filter((contact) => item.id !== contact.id);
     });
 
+    this.selection.clear();
     this.setLoginSnackBar('Removed');
   }
 

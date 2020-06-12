@@ -1,0 +1,70 @@
+<h2>Contacts</h2>
+
+<mat-table [dataSource]="contacts" class="mat-elevation-z8">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.firstName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="phoneNumber">
+    <mat-header-cell *matHeaderCellDef> Phone number </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.phoneNumber }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="contactsColumns"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: contactsColumns"
+    (click)="selection.toggle(row)"
+  ></mat-row>
+</mat-table>
+
+<mat-card *ngIf="contacts?.length === 0">
+  No data available
+</mat-card>
+
+<section>
+  <button
+    mat-raised-button
+    (click)="editContact()"
+    [disabled]="selection?.selected?.length !== 1"
+  >
+    Edit contact
+  </button>
+  <button mat-raised-button (click)="addContact()">Add contact</button>
+  <button
+    mat-raised-button
+    (click)="removeContacts()"
+    [disabled]="selection?.selected?.length === 0"
+  >
+    Remove contacts
+  </button>
+</section>

@@ -3,8 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APP_ENDPOINT: 'https://contacts-api.getsandbox.com:443',
 };
+
+// user: crm@crm.com
+// password: crm1234_
 
 /*
  * For easier debugging in development mode, you can import the following file

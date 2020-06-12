@@ -1,0 +1,24 @@
+mat-table,
+h2 {
+  margin: 2rem;
+}
+
+th,
+td {
+  border-color: white;
+}
+
+section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem;
+  button {
+    margin: 0 0.5rem 0 0.5rem;
+  }
+}
+
+mat-card {
+  margin: 2rem;
+  justify-content: center;
+  display: flex;
+}
